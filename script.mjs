@@ -45,7 +45,23 @@ function getQuote(req, res, next) {
 
 server.get("/tmp/quote", getQuote);
 
-// Start serveren
+// Rute for "/tmp/sum/:a/:b" POST-metode
+server.post('/tmp/sum/:a/:b', (req, res) => {
+    const a = parseFloat(req.params.a); 
+    const b = parseFloat(req.params.b); 
+
+    if (isNaN(a) || isNaN(b)) {
+        return res.status(HTTP_CODES.CLIENT_ERROR.BAD_REQUEST)
+                  .send('Both parameters must be valid numbers.')
+                  .end();
+    }
+
+    const sum = a + b; 
+    res.status(HTTP_CODES.SUCCESS.OK)
+       .send(`The sum of ${a} and ${b} is ${sum}.`)
+       .end();
+});
+
 server.listen(server.get('port'), function () {
     console.log('server running', server.get('port'));
 }); // Dette er en test
