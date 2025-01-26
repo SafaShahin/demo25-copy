@@ -1,11 +1,15 @@
 import express from 'express'
 import HTTP_CODES from './utils/httpCodes.mjs';
+import { v4 as uuidv4 } from 'uuid';
 
 const server = express();
 const port = (process.env.PORT || 8000);
 
+
 server.set('port', port);
 server.use(express.static('public'));
+
+const decks = {};
 
 function getRoot(req, res, next) {
     res.status(HTTP_CODES.SUCCESS.OK).send('Hello World').end();
@@ -61,6 +65,72 @@ server.post('/tmp/sum/:a/:b', (req, res) => {
        .send(`The sum of ${a} and ${b} is ${sum}.`)
        .end();
 });
+
+//kortstokk
+server.post('/temp/deck', (req, res) => {
+    const deckId = uuidv4();
+    const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+    const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+    const deck = suits.flatMap(suit => ranks.map(rank => ({ suit: suit.toLowerCase(), rank: rank.toLowerCase() })));
+
+    decks[deckId] = deck;
+
+    res.status(HTTP_CODES.SUCCESS.OK).send({ deckId }).end();
+});
+
+server.patch('/temp/deck/shuffle/:deck_id', (req, res) => {
+    const { deck_id } = req.params;
+
+    if (!decks[deck_id]) {
+        return res.status(HTTP_CODES.CLIENT_ERROR.NOT_FOUND).send('Deck not found.').end();
+    }
+
+    decks[deck_id] = decks[deck_id].sort(() => Math.random() - 0.5);
+
+    res.status(HTTP_CODES.SUCCESS.OK).send('Deck shuffled.').end();
+});
+
+server.get('/temp/deck/:deck_id', (req, res) => {
+    const { deck_id } = req.params;
+
+    if (!decks[deck_id]) {
+        return res.status(HTTP_CODES.CLIENT_ERROR.NOT_FOUND).send('Deck not found.').end();
+    }
+
+    res.status(HTTP_CODES.SUCCESS.OK).send(decks[deck_id]).end();
+});
+
+server.get('/temp/deck/:deck_id/card', (req, res) => {
+    const { deck_id } = req.params;
+
+    console.log(`Attempting to draw a card from deck ${deck_id}`);  // Log the deck_id
+
+    if (!decks[deck_id]) {
+        console.log(`Deck not found: ${deck_id}`);
+        return res
+            .status(HTTP_CODES.CLIENT_ERROR.NOT_FOUND)
+            .send('Kortstokk ikke funnet.')
+            .end();
+    }
+
+    const card = decks[deck_id].pop();  // Draw a card
+
+    console.log(`Remaining cards in deck ${deck_id}:`, decks[deck_id].length);  // Log remaining cards in deck
+
+    if (!card) {
+        console.log(`Deck ${deck_id} is empty.`);
+        return res
+            .status(HTTP_CODES.CLIENT_ERROR.GONE)
+            .send('Ingen kort igjen i kortstokken.')
+            .end();
+    }
+
+    console.log(`Card drawn from deck ${deck_id}:`, card);  // Log the card that was drawn
+
+    res.status(HTTP_CODES.SUCCESS.OK).send({ card }).end();
+});
+
+
 
 server.listen(server.get('port'), function () {
     console.log('server running', server.get('port'));
