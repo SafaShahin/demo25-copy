@@ -1,11 +1,15 @@
 {
   "dependencies": {
+    "connect-mongo": "^5.1.0",
     "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.10.0",
     "uuid": "^11.0.5"
   },
   "name": "demo25-copy",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "main": "script.mjs",
   "devDependencies": {
     "nodemon": "^3.1.9"
   },

@@ -1,21 +1,55 @@
-import express from 'express'
+import express from 'express';
+import session from 'express-session';
+import mongoose from 'mongoose';
+import connectMongo from 'connect-mongo';
 import HTTP_CODES from './utils/httpCodes.mjs';
 import { v4 as uuidv4 } from 'uuid';
 
 const server = express();
 const port = (process.env.PORT || 8000);
 
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/sessiondb', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.log("Error connecting to MongoDB:", err));
+
+// Set up MongoDB session store with express-session
+const MongoStore = connectMongo.create({
+    mongoUrl: 'mongodb://localhost:27017/sessiondb', // MongoDB connection URL
+    collectionName: 'sessions',  // Optional: specify the collection name
+});
+
+// Configure the session middleware
+server.use(session({
+    secret: 'your-secret-key', // Secret to sign the session ID
+    resave: false,
+    saveUninitialized: true, 
+    store: MongoStore,  // Use MongoDB store for sessions
+    cookie: { secure: false }  // Set to true if using HTTPS, false for local dev
+}));
 
 server.set('port', port);
 server.use(express.static('public'));
 
 const decks = {};
 
+// Route for testing session
+server.get("/session", (req, res) => {
+    if (!req.session.user) {
+        req.session.user = { id: uuidv4() }; // Assign a new ID to the session if not set
+    }
+    res.status(HTTP_CODES.SUCCESS.OK).send(`User session: ${JSON.stringify(req.session.user)}`).end();
+});
+
 function getRoot(req, res, next) {
     res.status(HTTP_CODES.SUCCESS.OK).send('Hello World').end();
 }
 
 server.get("/", getRoot);
+
 
 
 // Rute for "/tmp/poem"
