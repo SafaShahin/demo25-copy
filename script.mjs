@@ -16,19 +16,19 @@ mongoose.connect('mongodb://localhost:27017/sessiondb', {
 .then(() => console.log("MongoDB connected"))
 .catch((err) => console.log("Error connecting to MongoDB:", err));
 
-// Set up MongoDB session store with express-session
+
 const MongoStore = connectMongo.create({
-    mongoUrl: 'mongodb://localhost:27017/sessiondb', // MongoDB connection URL
-    collectionName: 'sessions',  // Optional: specify the collection name
+    mongoUrl: 'mongodb://localhost:27017/sessiondb', 
+    collectionName: 'sessions',  
 });
 
-// Configure the session middleware
+
 server.use(session({
-    secret: 'your-secret-key', // Secret to sign the session ID
+    secret: 'your-secret-key', 
     resave: false,
     saveUninitialized: true, 
-    store: MongoStore,  // Use MongoDB store for sessions
-    cookie: { secure: false }  // Set to true if using HTTPS, false for local dev
+    store: MongoStore,  
+    cookie: { secure: false }  
 }));
 
 server.set('port', port);
@@ -39,7 +39,7 @@ const decks = {};
 // Route for testing session
 server.get("/session", (req, res) => {
     if (!req.session.user) {
-        req.session.user = { id: uuidv4() }; // Assign a new ID to the session if not set
+        req.session.user = { id: uuidv4() }; 
     }
     res.status(HTTP_CODES.SUCCESS.OK).send(`User session: ${JSON.stringify(req.session.user)}`).end();
 });
@@ -137,7 +137,7 @@ server.get('/temp/deck/:deck_id', (req, res) => {
 server.get('/temp/deck/:deck_id/card', (req, res) => {
     const { deck_id } = req.params;
 
-    console.log(`Attempting to draw a card from deck ${deck_id}`);  // Log the deck_id
+    console.log(`Attempting to draw a card from deck ${deck_id}`);  
 
     if (!decks[deck_id]) {
         console.log(`Deck not found: ${deck_id}`);
