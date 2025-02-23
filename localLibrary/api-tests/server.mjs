@@ -3,7 +3,7 @@ import session from 'express-session';
 import mongoose from 'mongoose';
 import connectMongo from 'connect-mongo';
 import { v4 as uuidv4 } from 'uuid';
-import HTTP_CODES from './utils/httpCodes.mjs';
+import HTTP_CODES from './api-tests/utils/httpCodes.mjs';
 import treeRoutes from './routes/treeRoutes.js';
 
 const server = express();
