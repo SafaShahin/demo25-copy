@@ -7,17 +7,23 @@ import HTTP_CODES from './api-tests/utils/httpCodes.mjs';
 import treeRoutes from './routes/treeRoutes.js';
 
 const server = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
 
 //  environment variable for MongoDB connection
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/sessiondb';
+
+
+console.log("Attempt to connect to MongoDB at:", MONGO_URI);
 
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 .then(() => console.log("MongoDB connected"))
-.catch(err => console.error("Error connecting to MongoDB:", err));
+.catch(err => {
+    console.error("Error connecting to MongoDB:", err);
+    process.exit(1); 
+});
 
 const MongoStore = connectMongo.create({
     mongoUrl: MONGO_URI,
