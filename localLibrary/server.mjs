@@ -7,7 +7,7 @@ import HTTP_CODES from './api-tests/utils/httpCodes.mjs';
 import treeRoutes from './routes/treeRoutes.js';
 
 const server = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 10000; ;
 
 //  environment variable for MongoDB connection
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/sessiondb';
