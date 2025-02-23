@@ -9,15 +9,18 @@ import treeRoutes from './routes/treeRoutes.js';
 const server = express();
 const port = process.env.PORT || 8000;
 
-mongoose.connect('mongodb://localhost:27017/sessiondb', {
+//  environment variable for MongoDB connection
+const MONGO_URI = process.env.MONGO_URI;
+
+mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 .then(() => console.log("MongoDB connected"))
-.catch(err => console.log("Error connecting to MongoDB:", err));
+.catch(err => console.error("Error connecting to MongoDB:", err));
 
 const MongoStore = connectMongo.create({
-    mongoUrl: 'mongodb://localhost:27017/sessiondb',
+    mongoUrl: MONGO_URI,
     collectionName: 'sessions'
 });
 
@@ -29,14 +32,9 @@ server.use(session({
     cookie: { secure: false }
 }));
 
-
 server.use(express.json());
-
-
 server.use(express.static('../public'));
-
 server.use('/api/tree', treeRoutes);
-
 
 server.get("/session", (req, res) => {
     if (!req.session.user) {
@@ -50,6 +48,13 @@ server.get("/", (req, res) => {
     res.status(HTTP_CODES.SUCCESS.OK).send('Hello World');
 });
 
+// Start server
 server.listen(port, () => {
     console.log(`Server running on port ${port}`);
+});
+
+// errors hndlin  
+process.on("uncaughtException", (err) => {
+  console.error("There was an uncaught error", err);
+  process.exit(1);
 });
