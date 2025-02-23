@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "connect-mongo": "^5.1.0",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.10.0",
+    "uuid": "^11.0.5"
+  },
+  "name": "demo25-copy",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "localLibrary/server.mjs",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "scripts": {
+    "start": "node localLibrary/server.mjs",
+    "dev": "nodemon localLibrary/server.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SafaShahin/demo25-copy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SafaShahin/demo25-copy/issues"
+  },
+  "homepage": "https://github.com/SafaShahin/demo25-copy#readme",
+  "description": ""
+}
