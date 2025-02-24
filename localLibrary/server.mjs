@@ -5,6 +5,13 @@ import connectMongo from 'connect-mongo';
 import { v4 as uuidv4 } from 'uuid';
 import HTTP_CODES from './api-tests/utils/httpCodes.mjs';
 import treeRoutes from './routes/treeRoutes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+
+//  path issue for static files
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const server = express();
 const port = process.env.PORT || 10000; ;
@@ -39,7 +46,9 @@ server.use(session({
 }));
 
 server.use(express.json());
-server.use(express.static('../public'));
+
+server.use(express.static(path.join(__dirname, 'public')));
+
 server.use('/api/tree', treeRoutes);
 
 server.get("/session", (req, res) => {
@@ -49,9 +58,9 @@ server.get("/session", (req, res) => {
     res.status(HTTP_CODES.SUCCESS.OK).send(`User session: ${JSON.stringify(req.session.user)}`);
 });
 
-// Root route
+// Root route index.html for PWA
 server.get("/", (req, res) => {
-    res.status(HTTP_CODES.SUCCESS.OK).send('Hello World');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start server
