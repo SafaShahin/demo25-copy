@@ -47,7 +47,7 @@ server.use(session({
 
 server.use(express.json());
 
-server.use(express.static(path.join(__dirname, 'public')));
+server.use(express.static(path.join(__dirname, 'public'))); // serve static files: for the browser to fetch sw.js, manifest.json,
 
 server.use('/api/tree', treeRoutes);
 
