@@ -1,5 +1,6 @@
-// No 'idb' import already loaded in index.html
-const dbPromise = window.openDB('LocalLibraryDB', 1, {
+import { openDB } from 'https://cdn.jsdelivr.net/npm/idb@7/build/esm/index.js';
+
+const dbPromise = openDB('LocalLibraryDB', 1, {
     upgrade(db) {
       db.createObjectStore('treeData', { keyPath: 'id' });
     },
