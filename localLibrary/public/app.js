@@ -1,9 +1,9 @@
+// No 'idb' import already loaded in index.html
 const dbPromise = window.openDB('LocalLibraryDB', 1, {
     upgrade(db) {
       db.createObjectStore('treeData', { keyPath: 'id' });
     },
-  });
-  
+});
 
 // Function: save data
 async function saveData(data) {

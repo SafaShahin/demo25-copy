@@ -13,8 +13,8 @@ The project is an Express application demonstrates an in-memory CRUD API for a t
 - **/localLibrary/server.mjs**: Main server file
 
 ## Pwa Features
-**Offline Mode**: Uses a service worker to cache static files(:Supports  index.html client.).
-**Installable PWA**: Users can install it on their device. 
+**Offline Mode**: Uses a service worker (sw.js: handles offline caching)to cache static files(:Supports  index.html client.).
+**Installable PWA**: (manifest.json: allows installation.)Users can install it on their device. 
 **Fast**: Works when the user is offline.
 
 ## Render Production URL:
