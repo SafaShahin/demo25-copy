@@ -1,4 +1,4 @@
-import { openDB } from 'idb';
+import { openDB } from './idb.js';
 
 const dbPromise = openDB('LocalLibraryDB', 1, {
   upgrade(db) {
