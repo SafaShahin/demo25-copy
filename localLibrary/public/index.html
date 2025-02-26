@@ -11,7 +11,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="manifest" href="/manifest.json">
-    <script>
+    <script> // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
@@ -20,7 +20,13 @@
             });
         }
     </script>
+
+    <script type="module"> // Import and expose IndexedDB
+        import { openDB } from 'https://cdn.jsdelivr.net/npm/idb@7/build/esm/index.js';
+        window.openDB = openDB;
+    </script>
 </head>
+
 <body>
     <h1>Welcome to Local Library PWA</h1>
     <p>This is a Progressive Web App version PWA of Local Library API.</p>
@@ -32,4 +38,5 @@
     <script type="module" src="app.js"></script> 
 
 </body>
+
 </html>

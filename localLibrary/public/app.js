@@ -1,10 +1,9 @@
-import { openDB } from './idb.js';
-
-const dbPromise = openDB('LocalLibraryDB', 1, {
-  upgrade(db) {
-    db.createObjectStore('treeData', { keyPath: 'id' });
-  },
-});
+const dbPromise = window.openDB('LocalLibraryDB', 1, {
+    upgrade(db) {
+      db.createObjectStore('treeData', { keyPath: 'id' });
+    },
+  });
+  
 
 // Function: save data
 async function saveData(data) {
