@@ -9,7 +9,12 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.json">
 
-
+    <!-- Fix: Load IndexedDB (idb@8) from CDN -->
+    <script type="module">
+        import * as idb from 'https://cdn.jsdelivr.net/npm/idb@8/+esm';
+        window.idb = idb; // `idb`; globally available
+    </script>
+    
     <!-- Register Service Worker -->
     <script>
         if ('serviceWorker' in navigator) {
