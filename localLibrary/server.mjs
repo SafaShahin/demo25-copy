@@ -4,21 +4,19 @@ import mongoose from 'mongoose';
 import connectMongo from 'connect-mongo';
 import { v4 as uuidv4 } from 'uuid';
 import HTTP_CODES from './api-tests/utils/httpCodes.mjs';
-import treeRoutes from './routes/treeRoutes.js';
+import treeRoutes from './routes/treeRoutes.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-
-//  path issue for static files
+// Fix path issue for static files
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const server = express();
-const port = process.env.PORT || 10000; ;
+const port = process.env.PORT || 10000;
 
-//  environment variable for MongoDB connection
+// MongoDB connection
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/sessiondb';
-
 
 console.log("Attempt to connect to MongoDB at:", MONGO_URI);
 
@@ -47,10 +45,13 @@ server.use(session({
 
 server.use(express.json());
 
-server.use(express.static(path.join(__dirname, 'public'))); // serve static files: for the browser to fetch sw.js, manifest.json,
+// Serve static files
+server.use(express.static(path.join(__dirname, 'public')));
 
+// API routes
 server.use('/api/tree', treeRoutes);
 
+// Restore Session Route (Fixes `uuidv4` & `HTTP_CODES` Errors)
 server.get("/session", (req, res) => {
     if (!req.session.user) {
         req.session.user = { id: uuidv4() };
@@ -58,7 +59,7 @@ server.get("/session", (req, res) => {
     res.status(HTTP_CODES.SUCCESS.OK).send(`User session: ${JSON.stringify(req.session.user)}`);
 });
 
-// Root route index.html for PWA
+// Serve PWA index.html
 server.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -68,8 +69,8 @@ server.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
-// errors hndlin  
+// Error handling
 process.on("uncaughtException", (err) => {
-  console.error("There was an uncaught error", err);
-  process.exit(1);
+    console.error("There was an uncaught error", err);
+    process.exit(1);
 });

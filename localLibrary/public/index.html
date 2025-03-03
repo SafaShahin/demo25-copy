@@ -3,18 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Library PWA</title>
-
+    <title>Ramadan Quran Reading Plan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.json">
 
-    <!-- Fix: Load IndexedDB (idb@8) from CDN -->
-    <script type="module">
-        import * as idb from 'https://cdn.jsdelivr.net/npm/idb@8/+esm';
-        window.idb = idb; // `idb`; globally available
-    </script>
-    
     <!-- Register Service Worker -->
     <script>
         if ('serviceWorker' in navigator) {
@@ -27,12 +20,15 @@
     </script>
 </head>
 <body>
-    <h1>Welcome to Local Library PWA</h1>
-    <p>This is a Progressive Web App version of Local Library API.</p>
+    <div class="container mt-4">
+        <h1 class="text-center">Ramadan Quran Reading Tracker</h1>
+        <p class="text-center">Select your completion goal and track your progress.</p>
 
-    <button class="btn btn-success mt-3">Click</button>
+        <!-- Reading Plan Data Goes Here -->
+        <div id="readingPlan" class="list-group"></div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="app.js"></script> 
+    <script type="module" src="api.mjs"></script> 
 </body>
 </html>
