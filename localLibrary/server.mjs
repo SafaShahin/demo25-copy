@@ -1,14 +1,14 @@
 import express from 'express';
 import session from 'express-session';
 import mongoose from 'mongoose';
-import connectMongo from 'connect-mongo';
+import MongoStore from 'connect-mongo'; // Corrected import
 import { v4 as uuidv4 } from 'uuid';
 import HTTP_CODES from './api-tests/utils/httpCodes.mjs';
 import treeRoutes from './routes/treeRoutes.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Fix path issue for static files
+// Fix path issue
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -18,19 +18,20 @@ const port = process.env.PORT || 10000;
 // MongoDB connection
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/sessiondb';
 
-console.log("Attempt to connect to MongoDB at:", MONGO_URI);
+console.log("Attempting to connect to MongoDB at:", MONGO_URI);
 
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-.then(() => console.log("MongoDB connected"))
+.then(() => console.log(" MongoDB connected"))
 .catch(err => {
-    console.error("Error connecting to MongoDB:", err);
-    process.exit(1); 
+    console.error(" Error connecting to MongoDB:", err);
+    process.exit(1);
 });
 
-const MongoStore = connectMongo.create({
+// Corrected Session Store
+const sessionStore = MongoStore.create({
     mongoUrl: MONGO_URI,
     collectionName: 'sessions'
 });
@@ -39,38 +40,39 @@ server.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore,
+    store: sessionStore,  
     cookie: { secure: false }
 }));
 
 server.use(express.json());
 
-// Serve static files
+// Serve static files correctly
 server.use(express.static(path.join(__dirname, 'public')));
 
-// API routes
+//  API routes
 server.use('/api/tree', treeRoutes);
 
-// Restore Session Route (Fixes `uuidv4` & `HTTP_CODES` Errors)
+//  Restore session route
 server.get("/session", (req, res) => {
     if (!req.session.user) {
         req.session.user = { id: uuidv4() };
     }
-    res.status(HTTP_CODES.SUCCESS.OK).send(`User session: ${JSON.stringify(req.session.user)}`);
+    res.status(HTTP_CODES.SUCCESS.OK).json({ session: req.session.user });
 });
 
-// Serve PWA index.html
+//  PWA index.html  
 server.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start server
+
+//  Start server
 server.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on http://localhost:${port}`);
 });
 
-// Error handling
+//  Error handling
 process.on("uncaughtException", (err) => {
-    console.error("There was an uncaught error", err);
+    console.error(" Uncaught error:", err);
     process.exit(1);
 });

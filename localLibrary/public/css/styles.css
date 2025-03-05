@@ -1,0 +1,75 @@
+body {
+    background-color: #f5f0e1; 
+    color: #154734; 
+    font-family: 'Noto Naskh Arabic', serif; 
+  }
+  
+  /* Styling for headers */
+  h1, h2, h3 {
+    color: #154734;
+  }
+
+  /* Reduce the space around the header */
+h1 {
+    
+    margin-bottom: 5px; /* Reduce bottom spacing */
+  }
+  
+  p {
+   
+    margin-bottom: 10px; /* Reduce bottom spacing */
+  }
+  
+
+  
+  
+  /* list items */
+.list-group-item {
+    background-color: white;
+    border-left: 4px solid #154734; /* Dark Green */
+    padding: 5px 10px; /* Reduce padding */
+    margin-bottom: 5px; /* Reduce space between items */
+    font-size: 14px; /* Make text slightly smaller */
+    line-height: 1.3; /* Reduce spacing between text lines */
+  }
+  
+  
+  button, select {
+    background-color: #154734; 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  
+  /*  dropdown  */
+  select {
+    width: 60%;
+    max-width: 300px;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 5px;
+  }
+
+  /* Center  dropdown container */
+.dropdown-container {
+    display: flex;
+    flex-direction: column; /* Stack label and select */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Align vertically */
+    text-align: center; /* Center the label */
+    margin: 10px auto; /* Add some spacing */
+}
+
+/* Adjust the select element */
+select {
+    width: 60%; /* Keep the width controlled */
+    max-width: 250px; /* Reduce max width */
+    text-align: center; /* Center text */
+}
+/*  checkboxes */
+.progress-checkbox {
+    margin-right: 8px;
+    transform: scale(1.2);
+  }
+  

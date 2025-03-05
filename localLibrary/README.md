@@ -1,4 +1,4 @@
-# Ramadan Quran Reading Tracker - Now a Progressive Web App (PWA) 
+# Ramadan Quran Reading Tracker -  Progressive Web App (PWA) 
 
 ## Description
 This project is a **Progressive Web App (PWA)** that helps users **track their Quran reading progress during Ramadan**. It provides a structured reading plan, allows progress tracking with checkboxes, and ensures **offline support using IndexedDB**. Users can receive **daily notifications** to stay consistent with their Quran reading.
@@ -6,7 +6,7 @@ This project is a **Progressive Web App (PWA)** that helps users **track their Q
 ### **How It Works**  
 The Quran has **600 pages**, so to complete it in **30 days**, users can choose their goal and follow a structured plan.
 
-### **📖 Pages to Read Per Day Based on Completion Goals**  
+### ** Pages to Read Per Day Based on Completion Goals**  
 - **1 Completion** → 20 pages/day  
 - **2 Completions** → 40 pages/day  
 - **3 Completions** → 60 pages/day  
