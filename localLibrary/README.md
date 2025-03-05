@@ -3,10 +3,10 @@
 ## Description
 This project is a **Progressive Web App (PWA)** that helps users **track their Quran reading progress during Ramadan**. It provides a structured reading plan, allows progress tracking with checkboxes, and ensures **offline support using IndexedDB**. Users can receive **daily notifications** to stay consistent with their Quran reading.
 
-### **How It Works**  
+### How It Works
 The Quran has **600 pages**, so to complete it in **30 days**, users can choose their goal and follow a structured plan.
 
-### ** Pages to Read Per Day Based on Completion Goals**  
+### Pages to Read Per Day Based on Completion Goals  
 - **1 Completion** → 20 pages/day  
 - **2 Completions** → 40 pages/day  
 - **3 Completions** → 60 pages/day  
@@ -63,22 +63,22 @@ The application is built with:
 
 
 ##  **How It Works**
-### ** 1. Select Your Completion Goal**
+### 1. Select Your Completion Goal
 - The user chooses how many times they want to **complete the Quran** in Ramadan.
 - The app **generates a structured reading plan** with the required daily pages.
 
-### ** 2. Track & Update Progress**
+### 2. Track & Update Progress
 - Users can **mark pages as completed**, update progress, or **reset** the plan.
 - Data is **stored in IndexedDB**, so even if the internet is disconnected, progress is saved.
 - **The app displays the reading plan correctly**:
   The user can check off completed days.  
   Checked items remain checked when refreshing (**progress is saved in IndexedDB**).
 
-### ** 3. Offline Support**
+###  3. Offline Support
 - When offline, the app loads from **IndexedDB** instead of making an API call.
 - The reading plan is always **available** even with no internet.
 
-### ** 4. Daily Notifications**
+### 4. Daily Notifications
 - Users receive **automatic reminders** to stay consistent with their reading.
 - Uses **Service Workers** to send daily push notifications.
 

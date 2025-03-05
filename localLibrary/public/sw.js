@@ -1,4 +1,4 @@
-const CACHE_NAME = "localLibrary-cache-v3"; // Increment to clear old cache
+const CACHE_NAME = "localLibrary-cache-v4"; // Increment to clear old cache
 const STATIC_ASSETS = [
     "/",  
     "/index.html",
@@ -9,6 +9,7 @@ const STATIC_ASSETS = [
     "/css/bootstrap.min.css",   
     "/js/bootstrap.bundle.min.js", 
     "/app.mjs",
+    "/idb.js",
     "/sw.js"
 ];
 

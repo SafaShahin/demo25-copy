@@ -1,4 +1,4 @@
-import { openDB } from 'https://cdn.jsdelivr.net/npm/idb@7/+esm';
+import { openDB } from './idb.js';
 
 const dbPromise = openDB('QuranReadingTracker', 1, {
   upgrade(db) {
