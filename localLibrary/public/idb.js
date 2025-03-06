@@ -1,4 +1,4 @@
-import { openDB } from './idb.js';
+import { openDB } from 'idb';  
 
 const dbPromise = openDB('QuranReadingTracker', 1, {
   upgrade(db) {

@@ -1,4 +1,5 @@
-const CACHE_NAME = "localLibrary-cache-v4"; // Increment to clear old cache
+const CACHE_NAME = "localLibrary-cache-v6";  // Change version (v6)
+
 const STATIC_ASSETS = [
     "/",  
     "/index.html",
@@ -9,11 +10,11 @@ const STATIC_ASSETS = [
     "/css/bootstrap.min.css",   
     "/js/bootstrap.bundle.min.js", 
     "/app.mjs",
-    "/idb.js",
+    "/idb.js",  
     "/sw.js"
 ];
 
-// Install service worker and cache assets
+// Install and cache assets
 self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
@@ -22,18 +23,16 @@ self.addEventListener("install", (event) => {
     );
 });
 
-// Activate service worker and delete old caches
+// Activate service worker and remove old caches
 self.addEventListener("activate", (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
-                cacheNames.map((cache) => {
-                    if (cache !== CACHE_NAME) {
-                        return caches.delete(cache);
-                    }
-                })
+                cacheNames
+                    .filter(cache => cache !== CACHE_NAME) // Only remove outdated caches
+                    .map(cache => caches.delete(cache))
             );
-        })
+        }).then(() => self.clients.claim()) // Force update
     );
 });
 
@@ -49,23 +48,16 @@ self.addEventListener('push', function(event) {
     );
 });
 
-// Fetch event for caching and API handling
+// Fetch event for offline support
 self.addEventListener("fetch", (event) => {
-    if (event.request.url.includes("/api/tree")) {
-        event.respondWith(
-            fetch(event.request)
-            .then(response => response)
-            .catch(() => new Response(JSON.stringify({ error: "Offline mode: Data not available" }), {
-                headers: { "Content-Type": "application/json" }
-            }))
-        );
-        return;
-    }
-
-    // Serve cached assets
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
+        caches.match(event.request).then((cachedResponse) => {
+            return cachedResponse || fetch(event.request).catch(() => {
+                return new Response("You are offline. Some features may not work.", {
+                    status: 503,
+                    headers: { "Content-Type": "text/plain" }
+                });
+            });
         })
     );
 });
