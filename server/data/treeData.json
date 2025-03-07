@@ -1,0 +1,786 @@
+{
+  "id": 1,
+  "name": "Ramadan Quran Reading Plan",
+  "children": [
+    {
+      "id": 2,
+      "name": "Day 1",
+      "children": [
+        {
+          "id": 11,
+          "name": "1 completion → Read pages 1 - 20"
+        },
+        {
+          "id": 12,
+          "name": "2 completions → Read pages 1 - 40"
+        },
+        {
+          "id": 13,
+          "name": "3 completions → Read pages 1 - 60"
+        },
+        {
+          "id": 14,
+          "name": "5 completions → Read pages 1 - 100"
+        },
+        {
+          "id": 15,
+          "name": "10 completions → Read pages 1 - 200"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Day 2",
+      "children": [
+        {
+          "id": 21,
+          "name": "1 completion → Read pages 21 - 40"
+        },
+        {
+          "id": 22,
+          "name": "2 completions → Read pages 21 - 60"
+        },
+        {
+          "id": 23,
+          "name": "3 completions → Read pages 21 - 80"
+        },
+        {
+          "id": 24,
+          "name": "5 completions → Read pages 21 - 120"
+        },
+        {
+          "id": 25,
+          "name": "10 completions → Read pages 21 - 220"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Day 3",
+      "children": [
+        {
+          "id": 31,
+          "name": "1 completion → Read pages 41 - 60"
+        },
+        {
+          "id": 32,
+          "name": "2 completions → Read pages 41 - 80"
+        },
+        {
+          "id": 33,
+          "name": "3 completions → Read pages 41 - 100"
+        },
+        {
+          "id": 34,
+          "name": "5 completions → Read pages 41 - 140"
+        },
+        {
+          "id": 35,
+          "name": "10 completions → Read pages 41 - 240"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Day 4",
+      "children": [
+        {
+          "id": 41,
+          "name": "1 completion → Read pages 61 - 80"
+        },
+        {
+          "id": 42,
+          "name": "2 completions → Read pages 61 - 100"
+        },
+        {
+          "id": 43,
+          "name": "3 completions → Read pages 61 - 120"
+        },
+        {
+          "id": 44,
+          "name": "5 completions → Read pages 61 - 160"
+        },
+        {
+          "id": 45,
+          "name": "10 completions → Read pages 61 - 260"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Day 5",
+      "children": [
+        {
+          "id": 51,
+          "name": "1 completion → Read pages 81 - 100"
+        },
+        {
+          "id": 52,
+          "name": "2 completions → Read pages 81 - 120"
+        },
+        {
+          "id": 53,
+          "name": "3 completions → Read pages 81 - 140"
+        },
+        {
+          "id": 54,
+          "name": "5 completions → Read pages 81 - 180"
+        },
+        {
+          "id": 55,
+          "name": "10 completions → Read pages 81 - 280"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Day 6",
+      "children": [
+        {
+          "id": 61,
+          "name": "1 completion → Read pages 101 - 120"
+        },
+        {
+          "id": 62,
+          "name": "2 completions → Read pages 101 - 140"
+        },
+        {
+          "id": 63,
+          "name": "3 completions → Read pages 101 - 160"
+        },
+        {
+          "id": 64,
+          "name": "5 completions → Read pages 101 - 200"
+        },
+        {
+          "id": 65,
+          "name": "10 completions → Read pages 101 - 300"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Day 7",
+      "children": [
+        {
+          "id": 71,
+          "name": "1 completion → Read pages 121 - 140"
+        },
+        {
+          "id": 72,
+          "name": "2 completions → Read pages 121 - 160"
+        },
+        {
+          "id": 73,
+          "name": "3 completions → Read pages 121 - 180"
+        },
+        {
+          "id": 74,
+          "name": "5 completions → Read pages 121 - 220"
+        },
+        {
+          "id": 75,
+          "name": "10 completions → Read pages 121 - 320"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Day 8",
+      "children": [
+        {
+          "id": 81,
+          "name": "1 completion → Read pages 141 - 160"
+        },
+        {
+          "id": 82,
+          "name": "2 completions → Read pages 141 - 180"
+        },
+        {
+          "id": 83,
+          "name": "3 completions → Read pages 141 - 200"
+        },
+        {
+          "id": 84,
+          "name": "5 completions → Read pages 141 - 240"
+        },
+        {
+          "id": 85,
+          "name": "10 completions → Read pages 141 - 340"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Day 9",
+      "children": [
+        {
+          "id": 91,
+          "name": "1 completion → Read pages 161 - 180"
+        },
+        {
+          "id": 92,
+          "name": "2 completions → Read pages 161 - 200"
+        },
+        {
+          "id": 93,
+          "name": "3 completions → Read pages 161 - 220"
+        },
+        {
+          "id": 94,
+          "name": "5 completions → Read pages 161 - 260"
+        },
+        {
+          "id": 95,
+          "name": "10 completions → Read pages 161 - 360"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Day 10",
+      "children": [
+        {
+          "id": 101,
+          "name": "1 completion → Read pages 181 - 200"
+        },
+        {
+          "id": 102,
+          "name": "2 completions → Read pages 181 - 220"
+        },
+        {
+          "id": 103,
+          "name": "3 completions → Read pages 181 - 240"
+        },
+        {
+          "id": 104,
+          "name": "5 completions → Read pages 181 - 280"
+        },
+        {
+          "id": 105,
+          "name": "10 completions → Read pages 181 - 380"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Day 11",
+      "children": [
+        {
+          "id": 111,
+          "name": "1 completion → Read pages 201 - 220"
+        },
+        {
+          "id": 112,
+          "name": "2 completions → Read pages 201 - 240"
+        },
+        {
+          "id": 113,
+          "name": "3 completions → Read pages 201 - 260"
+        },
+        {
+          "id": 114,
+          "name": "5 completions → Read pages 201 - 300"
+        },
+        {
+          "id": 115,
+          "name": "10 completions → Read pages 201 - 400"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Day 12",
+      "children": [
+        {
+          "id": 121,
+          "name": "1 completion → Read pages 221 - 240"
+        },
+        {
+          "id": 122,
+          "name": "2 completions → Read pages 221 - 260"
+        },
+        {
+          "id": 123,
+          "name": "3 completions → Read pages 221 - 280"
+        },
+        {
+          "id": 124,
+          "name": "5 completions → Read pages 221 - 320"
+        },
+        {
+          "id": 125,
+          "name": "10 completions → Read pages 221 - 420"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Day 13",
+      "children": [
+        {
+          "id": 131,
+          "name": "1 completion → Read pages 241 - 260"
+        },
+        {
+          "id": 132,
+          "name": "2 completions → Read pages 241 - 280"
+        },
+        {
+          "id": 133,
+          "name": "3 completions → Read pages 241 - 300"
+        },
+        {
+          "id": 134,
+          "name": "5 completions → Read pages 241 - 340"
+        },
+        {
+          "id": 135,
+          "name": "10 completions → Read pages 241 - 440"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Day 14",
+      "children": [
+        {
+          "id": 141,
+          "name": "1 completion → Read pages 261 - 280"
+        },
+        {
+          "id": 142,
+          "name": "2 completions → Read pages 261 - 300"
+        },
+        {
+          "id": 143,
+          "name": "3 completions → Read pages 261 - 320"
+        },
+        {
+          "id": 144,
+          "name": "5 completions → Read pages 261 - 360"
+        },
+        {
+          "id": 145,
+          "name": "10 completions → Read pages 261 - 460"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Day 15",
+      "children": [
+        {
+          "id": 151,
+          "name": "1 completion → Read pages 281 - 300"
+        },
+        {
+          "id": 152,
+          "name": "2 completions → Read pages 281 - 320"
+        },
+        {
+          "id": 153,
+          "name": "3 completions → Read pages 281 - 340"
+        },
+        {
+          "id": 154,
+          "name": "5 completions → Read pages 281 - 380"
+        },
+        {
+          "id": 155,
+          "name": "10 completions → Read pages 281 - 480"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Day 16",
+      "children": [
+        {
+          "id": 161,
+          "name": "1 completion → Read pages 301 - 320"
+        },
+        {
+          "id": 162,
+          "name": "2 completions → Read pages 301 - 340"
+        },
+        {
+          "id": 163,
+          "name": "3 completions → Read pages 301 - 360"
+        },
+        {
+          "id": 164,
+          "name": "5 completions → Read pages 301 - 400"
+        },
+        {
+          "id": 165,
+          "name": "10 completions → Read pages 301 - 500"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Day 17",
+      "children": [
+        {
+          "id": 171,
+          "name": "1 completion → Read pages 321 - 340"
+        },
+        {
+          "id": 172,
+          "name": "2 completions → Read pages 321 - 360"
+        },
+        {
+          "id": 173,
+          "name": "3 completions → Read pages 321 - 380"
+        },
+        {
+          "id": 174,
+          "name": "5 completions → Read pages 321 - 420"
+        },
+        {
+          "id": 175,
+          "name": "10 completions → Read pages 321 - 520"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Day 18",
+      "children": [
+        {
+          "id": 181,
+          "name": "1 completion → Read pages 341 - 360"
+        },
+        {
+          "id": 182,
+          "name": "2 completions → Read pages 341 - 380"
+        },
+        {
+          "id": 183,
+          "name": "3 completions → Read pages 341 - 400"
+        },
+        {
+          "id": 184,
+          "name": "5 completions → Read pages 341 - 440"
+        },
+        {
+          "id": 185,
+          "name": "10 completions → Read pages 341 - 540"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Day 19",
+      "children": [
+        {
+          "id": 191,
+          "name": "1 completion → Read pages 361 - 380"
+        },
+        {
+          "id": 192,
+          "name": "2 completions → Read pages 361 - 400"
+        },
+        {
+          "id": 193,
+          "name": "3 completions → Read pages 361 - 420"
+        },
+        {
+          "id": 194,
+          "name": "5 completions → Read pages 361 - 460"
+        },
+        {
+          "id": 195,
+          "name": "10 completions → Read pages 361 - 560"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Day 20",
+      "children": [
+        {
+          "id": 201,
+          "name": "1 completion → Read pages 381 - 400"
+        },
+        {
+          "id": 202,
+          "name": "2 completions → Read pages 381 - 420"
+        },
+        {
+          "id": 203,
+          "name": "3 completions → Read pages 381 - 440"
+        },
+        {
+          "id": 204,
+          "name": "5 completions → Read pages 381 - 480"
+        },
+        {
+          "id": 205,
+          "name": "10 completions → Read pages 381 - 580"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Day 21",
+      "children": [
+        {
+          "id": 211,
+          "name": "1 completion → Read pages 401 - 420"
+        },
+        {
+          "id": 212,
+          "name": "2 completions → Read pages 401 - 440"
+        },
+        {
+          "id": 213,
+          "name": "3 completions → Read pages 401 - 460"
+        },
+        {
+          "id": 214,
+          "name": "5 completions → Read pages 401 - 500"
+        },
+        {
+          "id": 215,
+          "name": "10 completions → Read pages 401 - 600"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Day 22",
+      "children": [
+        {
+          "id": 221,
+          "name": "1 completion → Read pages 421 - 440"
+        },
+        {
+          "id": 222,
+          "name": "2 completions → Read pages 421 - 460"
+        },
+        {
+          "id": 223,
+          "name": "3 completions → Read pages 421 - 480"
+        },
+        {
+          "id": 224,
+          "name": "5 completions → Read pages 421 - 520"
+        },
+        {
+          "id": 225,
+          "name": "10 completions → Read pages 421 - 620"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Day 23",
+      "children": [
+        {
+          "id": 231,
+          "name": "1 completion → Read pages 441 - 460"
+        },
+        {
+          "id": 232,
+          "name": "2 completions → Read pages 441 - 480"
+        },
+        {
+          "id": 233,
+          "name": "3 completions → Read pages 441 - 500"
+        },
+        {
+          "id": 234,
+          "name": "5 completions → Read pages 441 - 540"
+        },
+        {
+          "id": 235,
+          "name": "10 completions → Read pages 441 - 640"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Day 24",
+      "children": [
+        {
+          "id": 241,
+          "name": "1 completion → Read pages 461 - 480"
+        },
+        {
+          "id": 242,
+          "name": "2 completions → Read pages 461 - 500"
+        },
+        {
+          "id": 243,
+          "name": "3 completions → Read pages 461 - 520"
+        },
+        {
+          "id": 244,
+          "name": "5 completions → Read pages 461 - 560"
+        },
+        {
+          "id": 245,
+          "name": "10 completions → Read pages 461 - 660"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Day 25",
+      "children": [
+        {
+          "id": 251,
+          "name": "1 completion → Read pages 481 - 500"
+        },
+        {
+          "id": 252,
+          "name": "2 completions → Read pages 481 - 520"
+        },
+        {
+          "id": 253,
+          "name": "3 completions → Read pages 481 - 540"
+        },
+        {
+          "id": 254,
+          "name": "5 completions → Read pages 481 - 580"
+        },
+        {
+          "id": 255,
+          "name": "10 completions → Read pages 481 - 680"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Day 26",
+      "children": [
+        {
+          "id": 261,
+          "name": "1 completion → Read pages 501 - 520"
+        },
+        {
+          "id": 262,
+          "name": "2 completions → Read pages 501 - 540"
+        },
+        {
+          "id": 263,
+          "name": "3 completions → Read pages 501 - 560"
+        },
+        {
+          "id": 264,
+          "name": "5 completions → Read pages 501 - 600"
+        },
+        {
+          "id": 265,
+          "name": "10 completions → Read pages 501 - 700"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Day 27",
+      "children": [
+        {
+          "id": 271,
+          "name": "1 completion → Read pages 521 - 540"
+        },
+        {
+          "id": 272,
+          "name": "2 completions → Read pages 521 - 560"
+        },
+        {
+          "id": 273,
+          "name": "3 completions → Read pages 521 - 580"
+        },
+        {
+          "id": 274,
+          "name": "5 completions → Read pages 521 - 620"
+        },
+        {
+          "id": 275,
+          "name": "10 completions → Read pages 521 - 720"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Day 28",
+      "children": [
+        {
+          "id": 281,
+          "name": "1 completion → Read pages 541 - 560"
+        },
+        {
+          "id": 282,
+          "name": "2 completions → Read pages 541 - 580"
+        },
+        {
+          "id": 283,
+          "name": "3 completions → Read pages 541 - 600"
+        },
+        {
+          "id": 284,
+          "name": "5 completions → Read pages 541 - 640"
+        },
+        {
+          "id": 285,
+          "name": "10 completions → Read pages 541 - 740"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Day 29",
+      "children": [
+        {
+          "id": 291,
+          "name": "1 completion → Read pages 561 - 580"
+        },
+        {
+          "id": 292,
+          "name": "2 completions → Read pages 561 - 600"
+        },
+        {
+          "id": 293,
+          "name": "3 completions → Read pages 561 - 620"
+        },
+        {
+          "id": 294,
+          "name": "5 completions → Read pages 561 - 660"
+        },
+        {
+          "id": 295,
+          "name": "10 completions → Read pages 561 - 760"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Day 30",
+      "children": [
+        {
+          "id": 301,
+          "name": "1 completion → Read pages 581 - 600"
+        },
+        {
+          "id": 302,
+          "name": "2 completions → Read pages 581 - 620"
+        },
+        {
+          "id": 303,
+          "name": "3 completions → Read pages 581 - 640"
+        },
+        {
+          "id": 304,
+          "name": "5 completions → Read pages 581 - 680"
+        },
+        {
+          "id": 305,
+          "name": "10 completions → Read pages 581 - 780"
+        }
+      ]
+    }
+  ]
+}
