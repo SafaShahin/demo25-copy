@@ -1,8 +1,8 @@
-const CACHE_NAME = "localLibrary-cache-v6";
+const CACHE_NAME = "Client-cache-v7";
 const STATIC_ASSETS = [
   "/",  
   "/index.html",
-  "/manifest.json",
+  "/manifest.webmanifest",
   "/favicon.ico",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
@@ -32,12 +32,18 @@ self.addEventListener("activate", event => {
       );
     }).then(() => self.clients.claim())
   );
+
+  // Tell all clients to refresh after update
+  self.clients.matchAll().then(clients => {
+    clients.forEach(client => client.navigate(client.url));
+  });
 });
 
-// Push Notification Listener
+// Push Notification Listener (missing payload issue)
 self.addEventListener("push", event => {
+  const message = event.data ? event.data.text() : "Don’t forget to read today’s Quran pages!";
   const options = {
-    body: 'Don’t forget to read today’s Quran pages! 📖✨',
+    body: message,
     icon: '/favicon.ico',
     vibrate: [100, 50, 100],
   };
@@ -46,15 +52,15 @@ self.addEventListener("push", event => {
   );
 });
 
-// Fetch event for offline support
+
+// Fetch event for offline support (only intercepts HTML page failures)
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
       return cachedResponse || fetch(event.request).catch(() => {
-        return new Response("You are offline. Some features may not work.", {
-          status: 503,
-          headers: { "Content-Type": "text/plain" }
-        });
+        if (event.request.destination === "document") { // Only for pages
+          return caches.match("./index.html"); // Load cached index.html if offline
+        }
       });
     })
   );
