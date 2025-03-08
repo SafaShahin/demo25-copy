@@ -56,21 +56,30 @@ self.addEventListener("push", event => {
 // Fetch event for offline support (only intercepts HTML page failures)
 self.addEventListener("fetch", event => {
   const url = event.request.url;
+
+  // Allow manifest to be served from cache
+  if (url.includes("manifest.webmanifest")) {
+    event.respondWith(
+      caches.match(event.request).then(cachedResponse => {
+        return cachedResponse || fetch(event.request);
+      })
+    );
+    return; // Stop further handling for manifest
+  }
   
   
-  if (url.includes("manifest.webmanifest") || url.includes("fonts.googleapis.com") || url.includes("gstatic.com")) {
+  if (url.includes("fonts.googleapis.com") || url.includes("gstatic.com")) {
     return; // Don't cache these files
   }
   
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
-      return cachedResponse || fetch(event.request)
-        .catch(() => {
+      return cachedResponse || fetch(event.request).catch(() => {
           // Return cached index.html for page requests when offline
           if (event.request.destination === "document") {
             return caches.match("/index.html");
           }
-          // Return a generic fallback response for other requests (CSS, JS, etc.)
+          
           return new Response("Offline: Resource not available", {
             status: 503,
             headers: { "Content-Type": "text/plain" }
