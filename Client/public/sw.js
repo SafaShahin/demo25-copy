@@ -55,11 +55,18 @@ self.addEventListener("push", event => {
 
 // Fetch event for offline support (only intercepts HTML page failures)
 self.addEventListener("fetch", event => {
+  const url = event.request.url;
+  
+  
+  if (url.includes("manifest.webmanifest") || url.includes("fonts.googleapis.com") || url.includes("gstatic.com")) {
+    return; // Don't cache these files
+  }
+  
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
       return cachedResponse || fetch(event.request).catch(() => {
-        if (event.request.destination === "document") { // Only for pages
-          return caches.match("./index.html"); // Load cached index.html if offline
+        if (event.request.destination === "document") {
+          return caches.match("/index.html"); // Load cached index.html if offline
         }
       });
     })

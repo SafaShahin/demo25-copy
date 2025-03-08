@@ -49,6 +49,11 @@ server.use(express.json());
 // Serve static files 
 server.use(express.static(path.join(__dirname, '../Client/public')));
 
+// Serve the manifest.webmanifest
+server.get("/manifest.webmanifest", (req, res) => {
+    res.sendFile(path.join(__dirname, "../Client/public/manifest.webmanifest"));
+});
+
 //  API routes
 server.use('/api/tree', treeRoutes);
 
