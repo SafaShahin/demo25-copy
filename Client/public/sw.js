@@ -64,11 +64,18 @@ self.addEventListener("fetch", event => {
   
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
-      return cachedResponse || fetch(event.request).catch(() => {
-        if (event.request.destination === "document") {
-          return caches.match("/index.html"); // Load cached index.html if offline
-        }
-      });
+      return cachedResponse || fetch(event.request)
+        .catch(() => {
+          // Return cached index.html for page requests when offline
+          if (event.request.destination === "document") {
+            return caches.match("/index.html");
+          }
+          // Return a generic fallback response for other requests (CSS, JS, etc.)
+          return new Response("Offline: Resource not available", {
+            status: 503,
+            headers: { "Content-Type": "text/plain" }
+          });
+        });
     })
   );
 });
