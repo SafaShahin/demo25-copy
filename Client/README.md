@@ -16,18 +16,19 @@ The Quran has 600 pages, so to complete it in 30 days, users can choose their go
 
 The application is built with:
 - **Node.js + Express** for the API and backend.
+- **PostgreSQL** for data persistence (**Previously MongoDB**).
 - **localStorage** for offline progress storage.
 - **Service Workers** for caching and push notifications.
 - **Bootstrap** for responsive UI design.
-- **MongoDB** for data persistence.
 
 ## Project Structure
 
 ### **Backend (Server & API)**
-- **/server/data/**  Stores `treeData.json` (Quran reading plan)
+- **/server/db.js**  PostgreSQL connection setup using `pg` package.
 - **/server/controllers/**  Handles API requests (`treeController.mjs`)
 - **/server/routes/** API endpoints (`treeRoutes.mjs`)
 - **/server/server.mjs** Main server file (Express API & server setup)
+- **/server/data/** (Previously used for `treeData.json` before migration to PostgreSQL).
 
 
 ### **Frontend (PWA & User Interface)**
@@ -74,5 +75,48 @@ The application is built with:
 - Progress is **saved in localStorage**, so it persists even after closing the browser.
 
 
+## **Backend Migration: PostgreSQL Instead of MongoDB**
+Initially, **MongoDB was used** because:
+- It allowed **storing nested JSON structures**, which aligned well with the hierarchical reading plan format.
+- It provided **flexibility in schema**, making it easy to adjust without strict table relationships.
+
+However, **PostgreSQL was required**, as relational databases for:
+- **Structured data with relationships** (Days & Goals → One-to-Many Relationship).
+- **ACID compliance** (Ensuring reliable transactions).
+- **Efficient querying using SQL**.
+
+Thus, the data was normalized into two tables:  
+`days` (Tracks each day in the reading plan).  
+`goals` (Tracks goals for each day, linked by `day_id` foreign key).  
+
+Now, all **CRUD operations are stored in PostgreSQL**, ensuring **persistent storage and better data integrity**.
+
+
 ## Render Production URL:
 - Live Demo of the API: **[https://demo25-copy.onrender.com](https://demo25-copy.onrender.com)**
+
+
+
+### **Test API with Postman**
+
+#### **GET**
+- Fetch entire plan: `GET http://localhost:10000/api/tree`
+- Fetch specific day: `GET http://localhost:10000/api/tree/2`
+
+#### **POST**
+- Add goal to a day:  
+  `json`
+ `` POST http://localhost:10000/api/tree/2`
+  {
+    "customGoal": "Read Surah Al-Kahf"
+  }
+
+#### **PUT**
+- Update a day’s name:
+``PUT http://localhost:10000/api/tree/2``
+{
+  "name": "Updated Day 2"
+}
+
+#### **DELETE**
+Remove a goal:`` DELETE http://localhost:10000/api/tree/2/12`
