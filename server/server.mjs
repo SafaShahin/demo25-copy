@@ -1,13 +1,15 @@
 import express from 'express';
 import session from 'express-session';
-import mongoose from 'mongoose';
-import MongoStore from 'connect-mongo'; 
+//import mongoose from 'mongoose';
+//import MongoStore from 'connect-mongo'; 
 import { v4 as uuidv4 } from 'uuid';
+import dotenv from 'dotenv';
 import HTTP_CODES from '../Client/api-tests/utils/httpCodes.mjs';
 import treeRoutes from './routes/treeRoutes.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+dotenv.config(); // Load environment variables - .env
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,31 +18,31 @@ const server = express();
 const port = process.env.PORT || 10000;
 
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/sessiondb';
+//const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/sessiondb';
 
-console.log("Attempting to connect to MongoDB at:", MONGO_URI);
+//console.log("Attempting to connect to MongoDB at:", MONGO_URI);
 
-mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log(" MongoDB connected"))
-.catch(err => {
-    console.error(" Error connecting to MongoDB:", err);
-    process.exit(1);
-});
+//mongoose.connect(MONGO_URI, {
+  //  useNewUrlParser: true,
+  //  useUnifiedTopology: true
+//})
+//.then(() => console.log(" MongoDB connected"))
+//.catch(err => {
+  //  console.error(" Error connecting to MongoDB:", err);
+   // process.exit(1);
+//});
 
 
-const sessionStore = MongoStore.create({
-    mongoUrl: MONGO_URI,
-    collectionName: 'sessions'
-});
+//const sessionStore = MongoStore.create({
+  //  mongoUrl: MONGO_URI,
+ //   collectionName: 'sessions'
+//});
 
 server.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: true,
-    store: sessionStore,  
+    //store: sessionStore,   //  MongoDB session storage 
     cookie: { secure: false }
 }));
 
@@ -54,7 +56,7 @@ server.get("/manifest.webmanifest", (req, res) => {
     res.sendFile(path.join(__dirname, "../Client/public/manifest.webmanifest"));
 });
 
-//  API routes
+//  PostgreSQL-based API routes
 server.use('/api/tree', treeRoutes);
 
 //  Restore session route
