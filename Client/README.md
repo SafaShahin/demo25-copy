@@ -97,7 +97,7 @@ Now, all **CRUD operations are stored in PostgreSQL**, ensuring **persistent sto
 
 
 
-### **Test API with Postman**
+### **API test with Postman**
 
 #### **GET**
 - Fetch entire plan: `GET http://localhost:10000/api/tree`
@@ -106,17 +106,17 @@ Now, all **CRUD operations are stored in PostgreSQL**, ensuring **persistent sto
 #### **POST**
 - Add goal to a day:  
   `json`
- `` POST http://localhost:10000/api/tree/2`
+ `POST http://localhost:10000/api/tree/2`
   {
     "customGoal": "Read Surah Al-Kahf"
   }
 
 #### **PUT**
 - Update a day’s name:
-``PUT http://localhost:10000/api/tree/2``
+`PUT http://localhost:10000/api/tree/2`
 {
   "name": "Updated Day 2"
 }
 
 #### **DELETE**
-Remove a goal:`` DELETE http://localhost:10000/api/tree/2/12`
+Remove a goal: `DELETE http://localhost:10000/api/tree/2/12`
