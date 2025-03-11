@@ -10,11 +10,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const server = express();
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 3000;
 
 // PostgreSQL Database Connection
 const pool = new pg.Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL, // Render provides this
     ssl: { rejectUnauthorized: false } //  Render PostgreSQL
 });
 
@@ -39,7 +39,6 @@ server.use(async (req, res, next) => {
         // Retrieve session data from database
         const sessionResult = await pool.query(`SELECT data FROM sessions WHERE id = $1`, [sessionId]);
         req.session = { id: sessionId, data: sessionResult.rows.length > 0 ? sessionResult.rows[0].data : {} };
-        
         next();
     } catch (error) {
         console.error("Error managing session:", error);
@@ -63,8 +62,13 @@ server.use(async (req, res, next) => {
 });
 
 
-server.use(express.static(path.join(__dirname, '../Client/public')));
+server.use(express.static(path.join(__dirname, '../Client/public'), {
+    index: false
+}));
 
+server.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, '../Client/public', 'index.html'));
+});
 
 server.get("/manifest.webmanifest", (req, res) => {
     res.sendFile(path.join(__dirname, "../Client/public/manifest.webmanifest"));
@@ -78,12 +82,8 @@ server.get("/session", (req, res) => {
 });
 
 
-server.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, '../Client/public', 'index.html'));
-});
-
-server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+server.listen(port, "0.0.0.0", () => {
+    console.log(`Server running on port ${port}`);
 });
 
 process.on("uncaughtException", (err) => {
