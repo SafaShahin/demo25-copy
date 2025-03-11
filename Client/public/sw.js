@@ -49,7 +49,7 @@ self.addEventListener("push", event => {
 
 
 // Fetch event for offline support (only intercepts HTML page failures)
-sself.addEventListener("fetch", event => {
+self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return; // Ignore non-GET requests
 
   const url = event.request.url;
