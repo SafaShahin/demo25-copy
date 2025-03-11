@@ -1,19 +1,12 @@
 {
   "dependencies": {
-    "connect-pg-simple": "^10.0.0",
-    "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "express-session": "^1.18.1",
-    "pg": "^8.13.3",
-    "uuid": "^11.0.5"
+    "pg": "^8.13.3"
   },
   "name": "demo25-copy",
   "version": "1.0.0",
   "type": "module",
   "main": "server/server.mjs",
-  "devDependencies": {
-    "nodemon": "^3.1.9"
-  },
   "scripts": {
     "start": "node server/server.mjs",
     "dev": "nodemon server/server.mjs",

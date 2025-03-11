@@ -14,12 +14,17 @@ The Quran has 600 pages, so to complete it in 30 days, users can choose their go
 - **5 Completions** → 100 pages/day  
 - **10 Completions** → 200 pages/day  
 
-The application is built with:
-- **Node.js + Express** for the API and backend.
-- **PostgreSQL** for data persistence (**Previously MongoDB**).
-- **localStorage** for offline progress storage.
-- **Service Workers** for caching and push notifications.
-- **Bootstrap** for responsive UI design.
+**Technology Stack**
+### **Backend (API & Database)**
+- **Node.js + Express**  Backend server & API routes.
+- **PostgreSQL**  Database storing reading plans & user progress.
+- **pgAdmin**  Tool for managing PostgreSQL database.
+- **pg (node-postgres)**  PostgreSQL client for querying the database.
+
+### **Frontend (PWA)**
+- **Service Workers**  Enables offline support & push notifications.
+- **localStorage**  Saves progress locally when offline.
+- **Bootstrap**  Provides responsive UI.
 
 ## Project Structure
 
@@ -90,6 +95,16 @@ Thus, the data was normalized into two tables:
 `goals` (Tracks goals for each day, linked by `day_id` foreign key).  
 
 Now, all **CRUD operations are stored in PostgreSQL**, ensuring **persistent storage and better data integrity**.
+
+
+##  **Database: PostgreSQL Setup**
+The project uses PostgreSQL as the primary database.
+
+### **Database Structure (Tables)**
+ storing Quran reading progress using **three tables:**
+- **`days`** Stores each day in the reading plan.
+- **`goals`** Stores reading goals linked to specific days.
+- **`sessions`** Manages user sessions manually.
 
 
 ## Render Production URL:
