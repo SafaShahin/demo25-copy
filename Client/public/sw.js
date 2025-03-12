@@ -56,8 +56,8 @@ self.addEventListener("fetch", event => {
 
   // Exclude API calls from caching
   if (url.pathname.startsWith("/api/")) {
-    return;
-  }
+    return fetch(event.request); 
+}
 
   // Allow manifest to be served from cache
   if (url.includes("manifest.webmanifest")) {
@@ -87,12 +87,12 @@ self.addEventListener("fetch", event => {
         return response;
       });
     }).catch(() => {
-      // If for HTML page, return cached index.html
+      // If request is for an HTML page, return cached index.html
       if (event.request.destination === "document") {
         return caches.match("/index.html");
       }
 
-      // Otherwise, return an offline error response
+      // Otherwise, return a  offline error response
       return new Response("Offline: Resource not available", {
         status: 503,
         headers: { "Content-Type": "text/plain" }
