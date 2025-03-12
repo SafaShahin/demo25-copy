@@ -52,7 +52,12 @@ self.addEventListener("push", event => {
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return; // Ignore non-GET requests
 
-  const url = event.request.url;
+  const url = new URL(event.request.url);
+
+  // Exclude API calls from caching
+  if (url.pathname.startsWith("/api/")) {
+    return;
+  }
 
   // Allow manifest to be served from cache
   if (url.includes("manifest.webmanifest")) {
@@ -70,22 +75,28 @@ self.addEventListener("fetch", event => {
   }
 
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        // Cache the response clone
-        return caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, response.clone());
-          return response;
-        });
-      })
-      .catch(() => caches.match(event.request).then(cachedResponse => {
-        return cachedResponse || (event.request.destination === "document"
-          ? caches.match("/index.html") // Serve index.html for offline navigation
-          : new Response("Offline: Resource not available", {
-              status: 503,
-              headers: { "Content-Type": "text/plain" }
-            })
-        );
-      }))
+    caches.match(event.request).then(cachedResponse => {
+      return cachedResponse || fetch(event.request).then(response => {
+        // Cache only static assets, not dynamic API responses
+        if (!url.pathname.startsWith("/api/")) {
+          return caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, response.clone());
+            return response;
+          });
+        }
+        return response;
+      });
+    }).catch(() => {
+      // If for HTML page, return cached index.html
+      if (event.request.destination === "document") {
+        return caches.match("/index.html");
+      }
+
+      // Otherwise, return an offline error response
+      return new Response("Offline: Resource not available", {
+        status: 503,
+        headers: { "Content-Type": "text/plain" }
+      });
+    })
   );
 });
