@@ -60,7 +60,7 @@ self.addEventListener("fetch", event => {
 }
 
   // Allow manifest to be served from cache
-  if (url.includes("manifest.webmanifest")) {
+  if (url.pathname.includes("manifest.webmanifest")) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
         return cachedResponse || fetch(event.request);
@@ -70,7 +70,7 @@ self.addEventListener("fetch", event => {
   }
 
   // Don't cache Google Fonts (prevents unnecessary caching issues)
-  if (url.includes("fonts.googleapis.com") || url.includes("gstatic.com")) {
+  if (url.hostname.includes("fonts.googleapis.com") || url.hostname.includes("gstatic.com")) {
     return;
   }
 
