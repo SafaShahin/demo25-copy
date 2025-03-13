@@ -60,3 +60,11 @@ select {
   text-align: center; /* Center text */
 }
 /*  checkboxes */
+
+.list-group-item {
+  background-color: white; /* White background */
+  border: 1px solid #ccc; /* Add border to separate items */
+  padding: 10px; /* Add spacing */
+  border-radius: 5px; /* Slightly rounded corners */
+  margin-bottom: 5px; /* Space between items */
+}
