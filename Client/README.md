@@ -108,6 +108,7 @@ This project is deployed using **Render**, and it can also be tested locally.
 ### **Local Testing (Development)**
 - **URL:** `http://localhost:10000/api/tree`
 - **Purpose:** Allows testing features before deploying to Render.
+
 - **How it works:**
   - The server runs locally (`server.mjs`).
   - It connects to the **Render-hosted PostgreSQL database**.
@@ -153,6 +154,22 @@ const pool = new pg.Pool({
 ### **process.env.DATABASE_URL** : Environment variable storing database credentials. 
 
 ### **ssl: { rejectUnauthorized: false }** : Required for secure PostgreSQL connections.
+
+### How PostgreSQL Works in here
+
+The PostgreSQL database is hosted on Render.
+pgAdmin is used to manage the database (tables, queries, etc.).
+The database schema is defined in (server/database/schema.sql):
+The database is seeded with initial data (server/database/seed.sql).
+The backend fetches data from PostgreSQL using SQL queries.
+
+running psql **"postgresql://quran_tracker_db_user:xxxx.render.com/quran_tracker_db"** Confirms that the database URL is correct. The credentials (username & password) are valid. PostgreSQL is running and accessible.
+
+
+
+
+( Server is running live and connected to the database.)
+
 
 ---
 

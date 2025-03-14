@@ -59,6 +59,9 @@ select {
   max-width: 250px; /* Reduce max width */
   text-align: center; /* Center text */
 }
+
+
+
 /*  checkboxes */
 
 .list-group-item {
