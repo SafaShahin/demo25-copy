@@ -1,6 +1,7 @@
 -- Droping existing tables to prevent duplication (deleting all data)
 DROP TABLE IF EXISTS goals;
 DROP TABLE IF EXISTS days;
+DROP TABLE IF EXISTS sessions;
 
 --  table for days (each day in the reading plan)
 CREATE TABLE days (

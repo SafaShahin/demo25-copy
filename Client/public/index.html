@@ -8,17 +8,18 @@
 
     <!-- Async loading of Bootstrap CSS -->
     <link rel="preload" href="/css/bootstrap.min.css" as="style">
-    <link rel="stylesheet" href="/css/bootstrap.min.css" media="print" onload="this.onload=null;this.media='all';">
-    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
     <!-- Non-critical CSS deferred -->
     <link rel="preload" href="/css/styles.css" as="style">
     <link rel="stylesheet" href="/css/styles.css" media="print" onload="this.onload=null;this.media='all';">
     
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap"></noscript>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+
     <!--  Service Worker -->
     <script>
         if ('serviceWorker' in navigator) {
@@ -53,7 +54,7 @@
         <div id="readingPlan" class="list-group"></div>
     </div>
 
-    <script type="module" src="/js/bootstrap.custom.mjs"></script>
+    <script type="module" src="/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="/app.mjs"></script>
 </body>
 </html>
