@@ -129,18 +129,29 @@ attachEventListeners();
 
 fetchReadingPlan();
 
-if ('Notification' in window && 'serviceWorker' in navigator) {
-Notification.requestPermission().then(permission => {
-  if (permission === 'granted') {
-    navigator.serviceWorker.ready.then(registration => {
-      console.log("Service worker ready for notifications!");
-      setInterval(() => {
-        registration.showNotification('Ramadan Quran Reminder', {
-          body: "Don't forget your daily Quran reading!",
-          icon: '/favicon.ico'
+function requestNotificationPermission() {
+  if ('Notification' in window && 'serviceWorker' in navigator) {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        navigator.serviceWorker.ready.then(registration => {
+          console.log("Service worker ready for notifications!");
+          setInterval(() => {
+            registration.showNotification('Ramadan Quran Reminder', {
+              body: "Don't forget your daily Quran reading!",
+              icon: '/favicon.ico'
+            });
+          }, 86400000); // Notify every 24 hours
         });
-      }, 86400000); // hver 24 timer
+      }
     });
   }
-});
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const notifyButton = document.getElementById('enableNotifications');
+  if (notifyButton) {
+    notifyButton.addEventListener('click', requestNotificationPermission);
+  }
+});
+
