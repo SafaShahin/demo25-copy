@@ -149,8 +149,10 @@ const pool = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false }
 });
+```
+### **process.env.DATABASE_URL** : Environment variable storing database credentials. 
 
-process.env.DATABASE_URL : Environment variable storing database credentials. ssl: { rejectUnauthorized: false } : Required for secure PostgreSQL connections.
+### **ssl: { rejectUnauthorized: false }** : Required for secure PostgreSQL connections.
 
 ---
 
