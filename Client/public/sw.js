@@ -69,7 +69,7 @@ self.addEventListener("fetch", event => {
     return; // Stop further handling for manifest
   }
 
-  // Don't cache Google Fonts (prevents unnecessary caching issues)
+  
   if (url.hostname.includes("fonts.googleapis.com") || url.hostname.includes("gstatic.com")) {
     return;
   }
@@ -77,7 +77,7 @@ self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
       return cachedResponse || fetch(event.request).then(response => {
-        // Cache only static assets, not dynamic API responses
+        // Cache static assets, not dynamic API responses
         if (!url.pathname.startsWith("/api/")) {
           return caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, response.clone());
