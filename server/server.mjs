@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const server = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 
 // PostgreSQL Database Connection
 const pool = new pg.Pool({
